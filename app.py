@@ -3,7 +3,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load model
-model = load_model("/Users/Yuki/ML_20242/best_cnn_model_50epoch.h5")
+model = load_model("ML_20242/best_cnn_model_50epoch.h5")
 
 
 class_names = ["Cat", "Dog"]  # 0 = Cat, 1 = Dog

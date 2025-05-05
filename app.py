@@ -3,8 +3,8 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load model
-model = load_model("ML_20242/best_cnn_model_50epoch.h5")
-
+model = load_model("best_cnn_model_50epoch.h5")
+print("Gradio version:", gr.__version__)
 
 class_names = ["Cat", "Dog"]  # 0 = Cat, 1 = Dog
 
@@ -32,6 +32,5 @@ demo = gr.Interface(
     title="Cat vs Dog Classifier",
     description="Upload an image of a cat or dog. Model will predict the class.",
 )
-
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(server_name="0.0.0.0", server_port=7860, share=True)

@@ -1,0 +1,6 @@
+services:
+  gradio-app:
+    build: .
+    ports:
+      - "7860:7860"
+    container_name: catdog-container

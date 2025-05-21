@@ -8,7 +8,7 @@ def safe_load_model(path):
     try:
         return load_model(path)
     except:
-        print(f"Không thể load model: {path}")
+        print(f"Cannot load model: {path}")
         return None
 
 
@@ -16,7 +16,7 @@ def safe_load_joblib(path):
     try:
         return joblib.load(path)
     except:
-        print(f"Không thể load file: {path}")
+        print(f"Cannot load file: {path}")
         return None
 
 
@@ -29,7 +29,6 @@ svm_result = safe_load_joblib("svm_model.pkl")
 knn_result = safe_load_joblib("knn_model.pkl")
 rf_model = safe_load_joblib("rfc_model.pkl")
 
-# unpack nếu model tồn tại
 if svm_result and isinstance(svm_result, tuple):
     svm_model, svm_pca, svm_scaler = svm_result
 else:

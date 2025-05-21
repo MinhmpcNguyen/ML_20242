@@ -4,6 +4,7 @@
 
 This project demonstrates multiple machine learning models applied to the Cat-Dog classification problem.
 
+# Dataset original source: "https://www.kaggle.com/competitions/dogs-vs-cats-redux-kernels-edition/data"
 ## How to Run the Demo
 
 From the root folder `ML_20242/`, run the following commands:

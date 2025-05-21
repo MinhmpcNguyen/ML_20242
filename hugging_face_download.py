@@ -19,7 +19,7 @@ def download_with_progress(url, output_path):
 
     if response.status_code != 200 or total < 5000:
         print(
-            f"Không thể tải {os.path.basename(output_path)} – URL lỗi hoặc file không tồn tại.",
+            f"Unable to download {os.path.basename(output_path)} – URL non-exist",
             flush=True,
         )
         return
@@ -37,14 +37,14 @@ def download_with_progress(url, output_path):
                     tqdm.write(f"{os.path.basename(output_path)}: {percent}%")
                     sys.stdout.flush()
                     last_percent = percent
-        print(f"Tải xong: {os.path.basename(output_path)}", flush=True)
+        print(f"Finish: {os.path.basename(output_path)}", flush=True)
 
 
 for filename, url in MODEL_URLS.items():
     file_path = os.path.join(CURRENT_DIR, filename)
 
     if os.path.exists(file_path):
-        print(f"{filename} đã tồn tại. Bỏ qua.")
+        print(f"{filename} exist. Next.")
     else:
-        print(f"Đang tải: {filename}")
+        print(f"Downloading: {filename}")
         download_with_progress(url, file_path)

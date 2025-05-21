@@ -23,6 +23,8 @@ def safe_load_joblib(path):
 cnn_model = safe_load_model("best_cnn_model_50epoch.h5")
 ann_model = safe_load_model("best_ann_model.h5")
 vgg_model = safe_load_model("vgg_model.h5")
+inception_model = safe_load_model("inceptionv3.h5")
+
 svm_result = safe_load_joblib("svm_model.pkl")
 knn_result = safe_load_joblib("knn_model.pkl")
 rf_model = safe_load_joblib("rfc_model.pkl")
@@ -71,6 +73,16 @@ def predict_vgg(img):
     return "Dog" if pred < 0.5 else "Cat"
 
 
+def predict_inception(img):
+    if not inception_model:
+        return "InceptionV3 model not available."
+    image = img.resize((224, 224))
+    x = np.array(image) / 255.0
+    x = x.reshape(1, 224, 224, 3)
+    pred = inception_model.predict(x).flatten()[0]
+    return "Dog" if pred > 0.5 else "Cat"
+
+
 def predict_svm(img):
     if not all([svm_model, svm_pca, svm_scaler]):
         return "SVM model not available."
@@ -106,6 +118,7 @@ def predict_switch(img, selected_model):
         "CNN": predict_cnn,
         "ANN": predict_ann,
         "VGG": predict_vgg,
+        "InceptionV3": predict_inception,
         "SVM": predict_svm,
         "KNN": predict_knn,
         "Random Forest": predict_rf,
@@ -119,7 +132,15 @@ demo = gr.Interface(
     inputs=[
         gr.Image(type="pil", label="Upload Cat/Dog Image"),
         gr.Radio(
-            choices=["CNN", "ANN", "VGG", "SVM", "KNN", "Random Forest"],
+            choices=[
+                "CNN",
+                "ANN",
+                "VGG19",
+                "InceptionV3",
+                "SVM",
+                "KNN",
+                "Random Forest",
+            ],
             label="Select Model",
         ),
     ],

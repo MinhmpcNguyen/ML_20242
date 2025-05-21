@@ -16,7 +16,7 @@ docker compose -f compose.yaml up
 These commands will build and start the Docker environment required for the demonstration.
 
 **Note:**  
-Due to the size of the ANN and VGG models, they will be downloaded from Hugging Face during the setup process. Additionally, some dependencies are large and may take time to install. Please expect the setup process to take approximately **7–10 minutes** depending on your system and internet connection.
+Due to the size of the ANN, VGG19 and Inceptionv3 models, they will be downloaded from Hugging Face during the setup process. Additionally, some dependencies are large and may take time to install. Please expect the setup process to take approximately **7–10 minutes** depending on your system and internet connection.
 
 ## Included Models
 
